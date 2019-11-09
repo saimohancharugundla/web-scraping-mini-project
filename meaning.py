@@ -12,7 +12,6 @@ while i=='y':
 		word=soup.find("span",attrs={"class":"hw dhw"}).text
 		pos=soup.find("div",attrs={"class":"posgram dpos-g hdib lmr-5"}).text
 		phonetic=soup.find("span",attrs={"class":"ipa dipa lpr-2 lpl-1"}).text
-		lis=[]
 		usage=[]
 		meaning = soup.find("div",attrs={"class":"def ddef_d db"}).text
 		print("\n")
@@ -31,6 +30,13 @@ while i=='y':
 		for k in usage:
 			print(k)
 		print("\n\n")
+		print(colored("NOTE!","red"),"For future reference we have stored this word.")
+		f=open("wordlist.txt","a+")
+		f.write("word:"+word+"\n"+"meaning:"+meaning+"\n"+"usage:"+"\n")
+		for x in usage:
+			f.write(x+"\n")
+		f.write("\n\n")
+		f.close()
 	except AttributeError:
 		print("Sorry!I dont find the word")
 	except requests.exceptions.ConnectionError:
